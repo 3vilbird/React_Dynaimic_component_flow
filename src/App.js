@@ -1,22 +1,31 @@
+
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import {Master} from './componentMaster/Master'
 
 function App() {
+
+const[nav,setNav] = useState(["one","two","three","four"]);
+const[page,setPage] = useState(0);
+
+
+const IncreamentPage = ()=>{
+  if(page < nav.length-1){
+    setPage(page+1);  
+  }
+    else{
+      setPage(0);     
+    }
+}
+
+
+
+const GetContenent = ()=> Master(IncreamentPage ,nav[page]);  //
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+     {GetContenent()}
       </header>
     </div>
   );
